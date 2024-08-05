@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\userAuth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserAuthFormController extends Controller
 {
@@ -22,6 +24,8 @@ class UserAuthFormController extends Controller
             'Trainingusage' => 'nullable|string|in:HeadTraining,SummerTraining,Sessions,Senior',
             'files' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx',
         ]);
+
+        $filePath[] = [];
 
         if ($request->has('files')) {
             $filePath = $request->file('files')->store('profile','public');
@@ -44,6 +48,17 @@ class UserAuthFormController extends Controller
 
         $userAuth->save();
 
-        return redirect()->route('UserProfile')->with('success', '');
+        $user = Auth::user();
+
+        if($user instanceof User) {
+            $user->first_login = false;
+            $user->save();
+            return redirect()->route('UserProfile')->with('success', '');
+        }
+
+
+
+
+        
     }
 }

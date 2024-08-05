@@ -1158,6 +1158,61 @@
         background: -webkit-linear-gradient(180deg, #CC1C22, transparent) #60191B
     }
 
+    .drop-container {
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        border: 2px dashed rgb(255, 171, 171);
+        color: #444;
+        cursor: pointer;
+        transition: background .2s ease-in-out, border .2s ease-in-out;
+    }
+
+    .drop-container:hover {
+        background: rgba(255, 0, 0, 0.164);
+        border-color: rgba(17, 17, 17, 0.616);
+    }
+
+    .drop-container:hover .drop-title {
+        color: #222;
+    }
+
+    .drop-title {
+        color: #444;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        transition: color .2s ease-in-out;
+    }
+
+    #file-input {
+        width: 350px;
+        max-width: 100%;
+        color: #444;
+        padding: 2px;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid rgba(8, 8, 8, 0.288);
+    }
+
+    #file-input::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #df0808;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+
+    #file-input::file-selector-button:hover {
+        background: #a50d0d;
+    }
 
 
 
@@ -1201,9 +1256,9 @@
 
 <body>
 
-    <header>
+    <header class="mb-4">
         <!-- Top Header -->
-        <div class="top-header py-2">
+        <div class="top-header py-2 bg-light">
             <div class="container d-flex justify-content-between">
                 <div class="contact-info">
                     <i class="fa fa-phone tph-icons"></i> <span class="text-dark infos">(+88) 1990 6886</span>
@@ -1215,41 +1270,48 @@
                     <div class="justify-content-center text-center">
 
 
-                       
-                        @if(!Auth::guard('owner')->check() && !Auth::guard('web')->check())
 
-                        <a href="{{ route('Check') }}" class="text-dark text-center cardentials">Log in</a>
-                        <span class="text-dark">|</span>
-                        <a href="{{ route('Check') }}" class="text-dark cardentials">Register</a>
-                            
+                        @if (!Auth::guard('owner')->check() && !Auth::guard('web')->check())
+                            <a href="{{ route('Check') }}" class="text-dark text-center cardentials">Log in</a>
+                            <span class="text-dark">|</span>
+                            <a href="{{ route('Check') }}" class="text-dark cardentials">Register</a>
                         @endif
-                           
 
-                        
-                        
-                        
-                        
+
+
+
+
+
                         @auth('owner')
                             @if (Auth::guard('owner')->check())
-                            <div class="d-flex text-center justify-content-center align-items-center my-1">
-                                <a href="{{ route('AcademyProfile') }}"
-                                    class="text-dark cardentials mr-2"> {{ Auth::guard('owner')->user()->Owner_name }}</a>
-                                <form method="POST" action="{{ route('Academylogout') }}">
-                                    @csrf
-                                    <button class="btn btn-outline-danger btn-sm" type="submit">Logout</button>
-                                </form>
+                                <div class="d-flex text-center justify-content-center align-items-center my-1">
+                                    <a href="{{ route('AcademyProfile') }}" class="text-dark cardentials mr-2">
+                                        {{ Auth::guard('owner')->user()->Owner_name }}</a>
+                                    <form method="POST" action="{{ route('Academylogout') }}">
+                                        @csrf
+                                        <button class="btn btn-outline-danger btn-sm" type="submit">Logout</button>
+                                    </form>
 
-                            </div>
+                                </div>
                             @endif
                         @endauth
 
                         @auth()
                             <div class="d-flex text-center justify-content-center align-items-center my-1">
                                 <a href="{{ route('UserProfile') }}"
-                                    class="text-dark cardentials mr-2">{{ Auth::user()->name }}</a>
-                                <form method="POST" action="{{ route('logout') }}">
+                                    class="text-dark cardentials mr-2 align-itmes-center">
+
+                                    <img src="{{ Auth::user()->getImageUrl() }}" class="rounded-circle mr-2 border border-dark border-2"
+                                        alt="Profile Image" width="30" height="30">
+                                    
+                                    {{ Auth::user()->name }}
+
+
+                                </a>
+                                
+                                <form method="POST" action="{{ route('logout') }}" class="border-left border-dark border-1">
                                     @csrf
-                                    <button class="btn btn-outline-danger btn-sm" type="submit">Logout</button>
+                                    <button class="btn btn-outline-danger btn-sm ml-2" type="submit">Logout</button>
                                 </form>
 
                             </div>
@@ -1273,7 +1335,7 @@
             </div>
         </div>
         <!-- Main Header -->
-        <div class="main-header py-3 bg-white">
+        <div class="main-header py-3 bg-white shadow">
             <div class="container d-flex justify-content-between align-items-center">
                 <div class="logo">
                     <a href="home"><img src="{{ asset('img/Logo.png') }}" alt=""></a>

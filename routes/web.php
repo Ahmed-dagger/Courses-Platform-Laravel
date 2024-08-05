@@ -53,6 +53,10 @@ Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProf
 
 Route::get('/UserProfile', [ProfileController::class,'User'])->name('UserProfile');
 
+Route::get('/UserProfile/{id}', [ProfileController::class,'UserConfigure'])->name('UserConfigure.show');
+
+Route::put('/UserProfile/{id}/update', [ProfileController::class,'upadate'])->name('UserConfigure.update');
+
 Route::get('/AddingCourses', [CoursesController::class, 'AddingCourses'])->name('AddingCourses');
 
 Route::post('/CourseAdder', [CoursesController::class, 'Add'])->name('CourseAdder');
@@ -61,7 +65,7 @@ Route::get('/Configure', [ProfileController::class, 'configureProfile'])->name('
 
 Route::put('/Configure/udpate', [ProfileController::class, 'updateinfo'])->name('updateinfo');
 
-Route::get('/register/FormAuth', [AuthController::class, 'FormAuthUSer'])->name('FormAuth')->middleware('Firstlogin');
+Route::get('/register/FormAuth', [AuthController::class, 'FormAuthUSer'])->name('FormAuth');
 
 Route::post('/register/FormAuth/submitted', [UserAuthFormController::class,'FormStore'])->name('userFormSubmit');
 

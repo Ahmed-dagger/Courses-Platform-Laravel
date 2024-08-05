@@ -18,7 +18,14 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password', 'phone','first_login'];
+    protected $fillable = [
+         'name',
+         'email', 
+         'password', 
+         'phone', 
+         'first_login', 
+         'image_paths',
+        ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -40,5 +47,17 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-   
+    public function getImageUrl()
+    {
+        $name = $this->name;
+        $imageDecoded = json_decode($this->image_paths, true);
+
+        if (is_string($imageDecoded) && !empty($imageDecoded))
+        {
+            return asset('storage/' . $imageDecoded);
+        }
+
+        return "https://eu.ui-avatars.com/api/?name=$name&size=250";
+
+    }
 }

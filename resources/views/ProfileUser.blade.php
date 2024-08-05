@@ -13,8 +13,8 @@
                             <div class="profile-section mb-3">
 
                                 <div class="container text-center">
-                                    <img src="img/handsome.jpg" class="rounded-circle AcademyImg"
-                                        alt="Profile Image" width="50" height="50">
+                                    <img src="{{ $user->getImageUrl() }}" class="rounded-circle AcademyImg"
+                                        alt="Profile Image">
                                     <h5 class="card-title mt-3">{{ Auth::user()->name }}</h5>
                                     <p class="card-text">1250 Courses Enrolled</p>
                                 </div>
@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center mb-3">
-                                <a href="{{ route('Configure') }}"><button class="ConfgButton me-2">Configuration</button></a>
+                                <a href="{{ route('UserConfigure.show' , $user->id) }}"><button class="ConfgButton me-2">Configuration</button></a>
                             </div>
 
                         </div>

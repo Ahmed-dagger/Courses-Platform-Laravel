@@ -1,9 +1,6 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="mt-5 col-md-12">
-        <!--Margin Space-->
-    </div>
 
     <div class="container-fluid Home-Banner justify-content-center align-items-center">
         <div class="row g-3 justify-content-center align-items-center">

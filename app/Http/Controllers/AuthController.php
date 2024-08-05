@@ -119,14 +119,14 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if($user instanceof User) {
+
                 if ($user->first_login) {
+
                     request()->session()->regenerate();
-                    
-    
-                    $user->first_login = false;
-                    $user->save();
-    
                     return redirect()->route('FormAuth');
+
+                    
+                    
                 }
     
                 return redirect()->intended('UserProfile');
