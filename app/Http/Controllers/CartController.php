@@ -24,6 +24,9 @@ class CartController extends Controller
             }
 
 
+            if(auth)
+
+
        
 
         return redirect()->route('courses')->with('success','Item Added successfully');

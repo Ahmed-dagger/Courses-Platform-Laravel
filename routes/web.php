@@ -90,6 +90,14 @@ Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.rem
 
 
 
+Route::middleware('auth')->group(function () {
+
+    Route::post('/cart/{course}', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
+    
+});
+
 
 
 
