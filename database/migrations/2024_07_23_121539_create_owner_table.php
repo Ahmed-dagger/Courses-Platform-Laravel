@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Owner_phone',120);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('Owner_password');
+            $table->string('academy_name');
+            $table->string('academy_type');
             $table->rememberToken();
             $table->timestamps();
         });

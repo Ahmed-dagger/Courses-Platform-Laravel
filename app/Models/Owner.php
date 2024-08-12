@@ -12,7 +12,9 @@ class Owner extends Authenticatable
         'Owner_name',
         'Owner_email',
         'Owner_password',
-        'Owner_phone'
+        'Owner_phone',
+        'academy_name',
+        'academy_type',
     ];
 
     protected $guard = 'owner';
@@ -43,5 +45,10 @@ class Owner extends Authenticatable
     public function getAuthPassword()
     {
         return $this->Owner_password;
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }

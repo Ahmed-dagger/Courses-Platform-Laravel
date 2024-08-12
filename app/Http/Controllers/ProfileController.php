@@ -7,14 +7,19 @@ use App\Models\Academy;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use PharIo\Manifest\Email;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function Profile()
     {
-        return view("Profile",['courses' => Course::all()]);
+        $owner = Auth::guard('owner')->user();
+        $courses = $owner->courses;
+        return view("Profile",compact('courses'));
     }
+    
 
     public function configureProfile(Academy $academy)
     {
@@ -58,10 +63,14 @@ class ProfileController extends Controller
         {
             $imagePath = $request->file('imageUpload')->store('profileimage','public');
             $validated['imageUpload'] = $imagePath;
+
+            Storage::disk('public')->delete($user->image_paths);
         }
 
         
         $user = User::findOrFail($id);
+
+        
 
         $updateData = [];
 
@@ -99,4 +108,6 @@ class ProfileController extends Controller
         return redirect()->route('UserProfile')->with('success','Updated Successfully');
         
     }
+
+   
 }

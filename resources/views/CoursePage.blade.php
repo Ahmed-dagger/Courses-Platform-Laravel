@@ -5,16 +5,16 @@
         <div class="container align-items-center justify-content-center">
             <div class="row justify-content-center align-items-center">
                 <div class="container d-flex  pt-5 mt-3">
-                    <a class="text-decoration-none" href="Home.html">
+                    <a class="text-decoration-none" href="{{ route('home') }}">
                         <h5 class="text-light pr-1">Home </h5>
                     </a>
                     <h6 class="text-danger d-flex">🔴</h6>
-                    <a href="Courses.html" class="text-decoration-none">
+                    <a href="{{ route('courses') }}" class="text-decoration-none">
                         <h5 class="text-light pl-1">Courses</h5>
                     </a>
                     <h6 class="text-danger d-flex">🔴</h6>
-                    <a href="Courses.html" class="text-decoration-none">
-                        <h5 class="text-light pl-1">Angular Course</h5>
+                    <a href="#" class="text-decoration-none">
+                        <h5 class="text-light pl-1">{{ $course-> name }}</h5>
                     </a>
 
                 </div>
@@ -36,7 +36,7 @@
 
                 <div class="container d-flex mt-3">
                     <img src="../img/Bannerwoman.png" width="30" class="rounded-circle" alt="">
-                    <h6 class="text-light pt-2 pl-3">Monica Belluci</h6>
+                    <h6 class="text-light pt-2 pl-3">{{ $Ownername }}</h6>
                     <h6 class="text-light pt-2 pl-3">|</h6>
                     <h6 class="pt-2 pl-3 text-light">Last Update 26 December 2024</h6>
 
@@ -80,7 +80,12 @@
 
                                         <div class="container mb-5">
                                             <div class="justify-content-between d-flex">
+                                                @if($course -> Price == 0)
+                                                <h5 class="text-danger">FREE</h5>
+                                                @else
                                                 <h5 class="text-danger">{{ $course-> Price }} USD</h5>
+                                                @endif
+                                                
                                                 <button class="badgeSail">-39%</button>
 
                                             </div>
@@ -130,31 +135,18 @@
                                         </div>
 
                                         <div class="container">
-                                            <button class="LogINBtn" style="font-weight: 700;">
-                                                <img class="mb-1" width="20" height="20"
-                                                    src="https://img.icons8.com/ios/128/ffffff/shopping-bag--v1.png"
-                                                    alt="shopping-bag--v1" />
-                                                Buy This Course
-                                            </button>
-                                        </div>
 
-                                        <div class="container mt-3">
-                                            <h4 class="">
+                                            <form action="{{route('cart.add',$course) }}" method="POST">
 
-                                                course content:
-                                            </h4>
-
-                                            <ul class="list-unstyled">
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                                <li class="p-2">Angular framework</li>
-                                            </ul>
-
+                                                @csrf
+                                                <button class="LogINBtn" style="font-weight: 700;">
+                                                    <img class="mb-1" width="20" height="20"
+                                                        src="https://img.icons8.com/ios/128/ffffff/shopping-bag--v1.png"
+                                                        alt="shopping-bag--v1" />
+                                                    Buy This Course
+                                                </button>
+                                            </form>
+                                            
                                         </div>
 
                                         <div class="mt-3">
@@ -209,8 +201,8 @@
 
     <div class="container my-5">
         <div class="row">
-            <h3 data-aos="fade-right">About This Course</h3>
-            <p data-aos="fade-right">
+            <h3>About This Course</h3>
+            <p>
                 Master Angular (formerly "Angular 2") and build awesome, reactive web apps with the successor of Angular.js
                 Learn modern Angular, including standalone components & signals from the ground up & in great detail!
                 Learn how to send HTTP requests, implement routing, authenticate users or handle complex forms - and much
@@ -227,7 +219,7 @@
 
     <div class="container CourseINclud">
         <div class="row">
-            <h3>what you will learn</h3>
+            <h3 class="mt-3">what you will learn</h3>
             <div class="col-md">
                 <div class="container justify-content-start">
                     <ul class="LearnList">
@@ -270,105 +262,81 @@
     <div class="container my-5">
 
         <h3 class="my-4">This course contains</h3>
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button-styled text-left" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <img width="17" height="17" src="https://img.icons8.com/ios/128/expand-arrow--v1.png"
-                            alt="expand-arrow--v1" />
-                        Framework Packs
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>pack boot and assigns of data into analysis</td>
-                                </tr>
-                                <tr>
-                                    <td>the second phase of learning framework</td>
-                                </tr>
-                                <tr>
-                                    <td>letting the system go to backend phase</td>
-                                </tr>
-                                <tr>
-                                    <td>security and how to keep it clean</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+        <div class="row my-5 px-3 g-3">
+            <div class="col-sm-3">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title"> Framework Packs</p>
+                            <p>Hover Me</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="title">Benefits</p>
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+ pack boot and assigns of data into analysis</span>
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+ the second phase of learning framework</span>
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+ letting the system go to backend phase</span>
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">+ security and how to keep it clean</span>
+                            
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="col-sm-3">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title"> API Packs</p>
+                            <p>Hover Me</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="title">BACK</p>
+                                <p>pack boot and assigns of data into analysis</p>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button-styled collapsed text-left" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <img width="17" height="17" src="https://img.icons8.com/ios/128/expand-arrow--v1.png"
-                            alt="expand-arrow--v1" />
-                        Front-end Pack
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>pack boot and assigns of data into analysis</td>
-                                </tr>
-                                <tr>
-                                    <td>the second phase of learning framework</td>
-                                </tr>
-                                <tr>
-                                    <td>letting the system go to backend phase</td>
-                                </tr>
-                                <tr>
-                                    <td>security and how to keep it clean</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+            <div class="col-sm-3">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title"> Front-end Packs</p>
+                            <p>Hover Me</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="title">BACK</p>
+                                <p>pack boot and assigns of data into analysis</p>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button-styled collapsed text-left" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <img width="17" height="17" src="https://img.icons8.com/ios/128/expand-arrow--v1.png"
-                            alt="expand-arrow--v1" />
-                        Back-end Pack
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>pack boot and assigns of data into analysis</td>
-                                </tr>
-                                <tr>
-                                    <td>the second phase of learning framework</td>
-                                </tr>
-                                <tr>
-                                    <td>letting the system go to backend phase</td>
-                                </tr>
-                                <tr>
-                                    <td>security and how to keep it clean</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+            <div class="col-sm-3">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="title"> Back-end Packs</p>
+                            <p>Hover Me</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="title">BACK</p>
+                                <p>pack boot and assigns of data into analysis</p>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
+    
         </div>
     </div>
+
+
+
+
+    
+        
+    
 
     <div class="container">
         <h3 class="mb-5">The Tutor of the course</h3>

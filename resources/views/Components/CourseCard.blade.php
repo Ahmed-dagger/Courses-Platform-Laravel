@@ -17,7 +17,16 @@
             </a>
 
 
+            
+
+            @if($course -> Price == 0)
+
+            <h5 class="card-title text-danger cardCourseTitle">FREE</h5>
+
+            @else
+
             <h5 class="card-title text-danger cardCourseTitle">{{ $course -> Price }}$</h5>
+            @endif
 
             <div class="d-flex justify-content-between">
                 <p class="Location">

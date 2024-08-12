@@ -12,7 +12,7 @@
                         <div class="ProfileInfo">
                             <div class="profile-section mb-3">
 
-                                <div class="container text-center">
+                                <div class="container text-center col-md-2">
                                     <img src="{{ $user->getImageUrl() }}" class="rounded-circle AcademyImg"
                                         alt="Profile Image">
                                     <h5 class="card-title mt-3">{{ Auth::user()->name }}</h5>

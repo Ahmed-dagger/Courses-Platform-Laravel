@@ -97,14 +97,12 @@ class AuthController extends Controller
             'Owner_email' => $validated['email'],
             'Owner_password' => Hash::make($validated['password']),
             'Owner_phone' => $validated['phone'],
+            'academy_name'=> $validated['academyname'],
+            'academy_type'=> $validated['academytype'],
         ]);
-        $academy = Academy::create([
-            'academy_name' => $validated['academyname'],
-            'academy_type' => $validated['academytype'],
-        ]);
+        
 
         $owner->save();
-        $academy->save();
 
         return redirect()->route('loginAcademy')->with('success', '');
     }
@@ -150,6 +148,7 @@ class AuthController extends Controller
             'Owner_email' => 'required|email',
             'Owner_password' => 'required',
         ]);
+        
 
         if (
             Auth::guard('owner')->attempt([
@@ -161,9 +160,12 @@ class AuthController extends Controller
             return redirect()->route('AcademyProfile');
         }
 
+        
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+        
     }
 
     public function Academylogout()

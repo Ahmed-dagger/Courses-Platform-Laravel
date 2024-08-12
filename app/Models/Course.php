@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable = [
+        'owner_id',
         'name',
         'price',
         'CoursesDate',
@@ -16,5 +17,9 @@ class Course extends Model
         'courseLevel',
         'courseLanguage',
     ];
+    public function owner()
+{
+    return $this->belongsTo(Owner::class);
+}
     use HasFactory;
 }

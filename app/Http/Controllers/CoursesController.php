@@ -7,33 +7,32 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class CoursesController extends Controller
 {
     public function Courses()
     {
-        /*
-        $course = new Course([
-            'name' => 'Angular2020',
-            'price' => '50',
-        ]);
-        $course->save();
-
-        */
-
         $coursesCount = Course::count();
 
-        
-        
+        $courses = Course::orderBy("created_at","desc");
 
-        return view('courses', ['courses' => Course::orderBy("created_at","desc")->paginate(4)],compact('coursesCount'));
+        if(request()->has("search")){
+
+            $courses = $courses->where("name","LIKE","%".request()->search."%");
+        }
+
+        $courses = $courses->paginate(4);
+        return view('courses', compact('courses'),compact('coursesCount'));
     }
 
     public function Coursepage($id)
     {
         
         $course = Course::findOrFail($id);
+        $Ownername = $course->owner-> Owner_name;
+
         
-        return view('CoursePage', compact('course'));
+        return view('CoursePage', compact('course','Ownername'));
     }
 
     public function AddingCourses()
@@ -55,6 +54,7 @@ class CoursesController extends Controller
         ]);
 
         $course = Course::create([
+            'owner_id'=> auth()->guard('owner')->user()->id,
             'name' => $validated['CourseName'],
             'price' => $validated['Price'],
             'courseLanguage' => $validated['courseLanguage'],
@@ -65,7 +65,7 @@ class CoursesController extends Controller
         ]);
 
         $course->save();
-        return redirect()->route('AddingCourses')->with('success','');
+        return redirect()->route('AcademyProfile')->with('success','');
 
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container-fluid Home-Banner justify-content-center align-items-center">
+    <div class="container-fluid Home-Banner justify-content-center align-items-center mt-3">
         <div class="row g-3 justify-content-center align-items-center">
             <div class="col-md p-5 g-3 justify-content-center align-items-center">
                 <div class="container">

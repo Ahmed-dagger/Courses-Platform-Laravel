@@ -7,6 +7,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\landingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserAuthFormController;
+use App\Http\Controllers\CartController;    
 use Illuminate\Support\Facades\Mail;
 use App\Http\Middleware\userVerified;
 use Illuminate\Routing\RouteGroup;
@@ -49,7 +50,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/Academylogout', [AuthController::class, 'Academylogout'])->name('Academylogout');
 
-Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProfile');
+Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProfile')->middleware('Owner');
 
 Route::get('/UserProfile', [ProfileController::class,'User'])->name('UserProfile');
 
@@ -83,18 +84,12 @@ Route::middleware('auth:owner')->group(function () {
 });
 
 
-Route::get('/send-test-email', function () {
-    try {
-        Mail::raw('This is a test email', function ($message) {
-            $message->to('ahdbo124@gmail.com')
-                    ->subject('Test Email');
-        });
+Route::post('/cart/{course}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
 
-        return 'Test email sent!';
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
+
+
 
 
 

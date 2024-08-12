@@ -60,4 +60,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return "https://eu.ui-avatars.com/api/?name=$name&size=250";
 
     }
+
 }
