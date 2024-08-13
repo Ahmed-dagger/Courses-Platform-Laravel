@@ -64,6 +64,10 @@
                 </div>
 
             </div>
+            <!-- adding course already added -->
+            @include('shared.error')
+            <!--course added success-->
+            @include('shared.success')
         </div>
 
     </div>

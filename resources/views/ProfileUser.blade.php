@@ -4,6 +4,9 @@
     <!--Profile-->
     <div class="container mt-5 Profile">
         <div class="row">
+            <div>
+                @include('shared.success')
+            </div>
             <div class="col-12">
                 <div class="card">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp" class="ProfileBack img-fluid" alt="Academy Image">

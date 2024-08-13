@@ -157,7 +157,7 @@
                                 </div>
                             </li>
                             <li class="nav-item  {{ request()->routeIs('About') ? 'active' : '' }}">
-                                <a class="nav-link" href="About">
+                                <a class="nav-link" href="{{ route('About') }}">
                                     About
 
                                 </a>
@@ -325,7 +325,7 @@
                     </ul>
                 </div>
                 <div class="col-md-3 text-center">
-                    <img src="img/white-logo.png" alt="Turuq Logo" class="mb-3">
+                    <img src="{{ asset('img/white-logo.png') }}" alt="Turuq Logo" class="mb-3">
                     <p class="text-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class="social-links">

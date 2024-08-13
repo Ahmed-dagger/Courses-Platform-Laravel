@@ -1,5 +1,5 @@
 <div class="card shadow-sm">
-    <a href=""> <img src="img/cardImage.jpeg" class="card-img-top" alt="Card Image"></a>
+    <a href="{{ route('coursePage', $cartItem->course->id) }}"> <img src="img/cardImage.jpeg" class="card-img-top" alt="Card Image"></a>
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <p class="card-text text-center online">{{ $cartItem->course->courseType }}</p>
@@ -11,14 +11,10 @@
             </div>
 
         </div>
-        <a href="" class="text-decoration-none text-dark">
+        <a href="{{ route('coursePage', $cartItem->course->id) }}" class="text-decoration-none text-dark">
             <h5 class="card-title cardCourseTitle">{{ $cartItem->course->name }}</h5>
         </a>
-
-
-
-        
-            <h5 class="card-title text-danger cardCourseTitle">{{ $cartItem->course->price }}$</h5>
+        <h5 class="card-title text-danger cardCourseTitle">{{ $cartItem->course-> Price }}$</h5>
         
 
         <div class="d-flex justify-content-between">

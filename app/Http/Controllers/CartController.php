@@ -15,21 +15,27 @@ class CartController extends Controller
             ->where('course_id', $course->id)
             ->first();
 
-            if (!$cart) {
+                
+                
+                if (!$cart) {
+                    Cart::create([
+                        'user_id' => auth()->user()->id,
+                        'course_id' => $course->id,
+                    ]);
 
-                Cart::create([
-                    'user_id' => auth()->user()->id,
-                    'course_id' => $course->id,
-                ]);
-            }
+                    return redirect()->route('courses')->with('success','Course added to cart successfully');
+                }
 
+                else
+                {
+                    return redirect()->route('courses')->with('error','Course already added and there');
 
-            if(auth)
+                }
+            
 
-
-       
-
-        return redirect()->route('courses')->with('success','Item Added successfully');
+            
+            
+            
 
        
     }
@@ -50,6 +56,6 @@ class CartController extends Controller
     public function remove(Cart $cart)
     {
         $cart->delete();
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success','Item deleted successfully');
     }
 }

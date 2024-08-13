@@ -127,7 +127,7 @@ class AuthController extends Controller
                     
                 }
     
-                return redirect()->intended('UserProfile');
+                return redirect()->intended('UserProfile')->with('success','You logged in successfully');
 
             }
 
