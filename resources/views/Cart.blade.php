@@ -7,6 +7,11 @@
             <h1 class="my-3">Cart <span style="font-size: 12px">({{ $cartcount }} Course)</span></h1> 
 
         </div>
+
+        <div class="container mb-3 text-left justify-content-end">
+            <h3 class="text-left">Total : {{ $total }}$</h3>
+
+        </div>
         
         <div class="row g-3 mb-5">
             @include('shared.success')
@@ -30,8 +35,6 @@
             @endif
 
         </div>
-            
-
 
     </div>
         

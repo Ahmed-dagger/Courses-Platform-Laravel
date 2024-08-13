@@ -372,6 +372,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="{{ asset('js/burger-menu.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         AOS.init({
 

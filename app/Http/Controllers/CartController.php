@@ -40,6 +40,7 @@ class CartController extends Controller
        
     }
 
+    
     public function index(Course $course)
     {
 
@@ -50,7 +51,11 @@ class CartController extends Controller
             ->get();
 
         $cartcount = Cart::count();
-        return view('Cart', compact('cartItems','course','cartcount'));
+        
+        $total = $cartItems->sum(function ($cartItem) {
+            return $cartItem->course-> Price;  
+        });
+        return view('Cart', compact('cartItems','course','cartcount','total'));
     }
 
     public function remove(Cart $cart)
