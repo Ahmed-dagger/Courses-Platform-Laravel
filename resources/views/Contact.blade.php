@@ -9,11 +9,11 @@
 
                 </div>
                 <div class="container d-flex text-center justify-content-center pb-5">
-                    <a class="text-decoration-none" href="Home.html">
+                    <a class="text-decoration-none" href="{{ route('home') }}">
                         <h5 class="text-light pr-1">Home </h5>
                     </a>
                     <h6 class="text-danger d-flex">🔴</h6>
-                    <a href="ContactUs.html" class="text-decoration-none">
+                    <a href="{{ route('Contact') }}" class="text-decoration-none">
                         <h5 class="text-light pl-1">Contact</h5>
                     </a>
 

@@ -6,11 +6,11 @@
             <div class="row g-3">
                 <div class="col-sm-5">
                     <div class="container d-flex my-4">
-                        <a href="Home.html" class="text-decoration-none">
+                        <a href="{{ route('home') }}" class="text-decoration-none">
                             <h4 class="text-secondary mr-2">Home </h4>
                         </a>
                         <h4 class="text-secondary mr-2"> / </h4>
-                        <a href="AboutUS.html" class="text-decoration-none">
+                        <a href="{{ route('About') }}" class="text-decoration-none">
                             <h4 class="text-secondary"> About </h4>
                         </a>
                     </div>

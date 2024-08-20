@@ -12,68 +12,44 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartController;
 
-Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+Route::group(['as' => ''] , function () {
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
-
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
-
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
-
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.store');
+    Route::post('/authnit', [AuthController::class, 'auhtnitcate'])->name('authnit');
+    
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    Route::get('/register', [AuthController::class, 'register']);
+    
+    Route::post('/post', [AuthController::class, 'store'])->name('post');
 });
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('verify-email', EmailVerificationPromptController::class)
-                ->name('verification.notice');
 
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-                ->middleware(['signed', 'throttle:6,1'])
-                ->name('verification.verify');
+    Route::get('/UserProfile', [ProfileController::class, 'User'])->name('UserProfile');
 
-    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware('throttle:6,1')
-                ->name('verification.send');
+    Route::get('/UserProfile/{id}', [ProfileController::class, 'UserConfigure'])->name('UserConfigure.show');
 
-    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-                ->name('password.confirm');
+    Route::put('/UserProfile/{id}/update', [ProfileController::class, 'upadate'])->name('UserConfigure.update');
 
-    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::get('/email/verify', [AuthController::class, 'EmailVerifyView'])->name('verification.notice');
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'EmailVerify'])
+        ->middleware(['auth', 'signed'])
+        ->name('verification.verify');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    Route::post('/email/verification-notification', [AuthController::class, 'sendVerificationEmail'])
+        ->middleware(['auth', 'throttle:6,1'])
+        ->name('verification.send');
+
+
+        Route::post('/cart/{course}', [CartController::class, 'add'])->name('cart.add');
+        Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+        Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
-Route::middleware('owner')->group(function () {
-
-    Route::get('/loginAcademy', [AuthController::class,'LoginAcademy'])->name('loginAcademy');
-
-    Route::get('/registerAcademy', [AuthController::class,'registerAcademy'])->name('registerAcademy');
-
-    Route::post('/Academyauthnit', [AuthController::class, 'Academyauhtnitcate'])->name('Academyauthnit');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    Route::post('/Academylogout', [AuthController::class, 'Academylogout'])->name('Academylogout');
-
-    Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProfile');
-
-    Route::get('/UserProfile', [ProfileController::class,'User'])->name('UserProfile');
-    
-});

@@ -1,5 +1,6 @@
 <div class="card shadow-sm">
-    <a href="{{ route('coursePage', $cartItem->course->id) }}"> <img src="img/cardImage.jpeg" class="card-img-top" alt="Card Image"></a>
+    <a href="{{ route('coursePage', $cartItem->course->id) }}"> <img src="img/cardImage.jpeg" class="card-img-top"
+            alt="Card Image"></a>
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <p class="card-text text-center online">{{ $cartItem->course->courseType }}</p>
@@ -14,8 +15,8 @@
         <a href="{{ route('coursePage', $cartItem->course->id) }}" class="text-decoration-none text-dark">
             <h5 class="card-title cardCourseTitle">{{ $cartItem->course->name }}</h5>
         </a>
-        <h5 class="card-title text-danger cardCourseTitle">{{ $cartItem->course-> Price }}$</h5>
-        
+        <h5 class="card-title text-danger cardCourseTitle">{{ $cartItem->course->Price }}$</h5>
+
 
         <div class="d-flex justify-content-between">
             <p class="Location">
@@ -41,10 +42,11 @@
         </div>
 
         <div class="container">
-            <form id="delete-form-{{ $cartItem-> id }}" action="{{ route('cart.remove', $cartItem) }}" method="POST" class="justify-content-center text-center">
+            <form id="delete-form-{{ $cartItem->id }}" action="{{ route('cart.remove', $cartItem) }}" method="POST"
+                class="justify-content-center text-center">
                 @csrf
                 @method('DELETE')
-                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $cartItem -> id }})">
+                <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $cartItem->id }})">
 
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/drxwpfop.json" trigger="hover" stroke="bold"
@@ -56,25 +58,27 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 <script>
     function confirmDelete(id) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You won\'t be able to revert this!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.getElementById('delete-form-' + id).submit();
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            );
-        }
-    });
-}
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                );
+            }
+        });
+    }
 </script>

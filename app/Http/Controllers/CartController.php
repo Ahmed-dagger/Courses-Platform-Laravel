@@ -31,14 +31,7 @@ class CartController extends Controller
                     return redirect()->route('courses')->with('error','Course already added and there');
 
                 }
-            
-
-            
-            
-            
-
-       
-    }
+            }
 
     
     public function index(Course $course)

@@ -7,15 +7,13 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\landingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserAuthFormController;
-use App\Http\Controllers\CartController;    
+use App\Http\Controllers\CartController; 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Middleware\userVerified;
 use Illuminate\Routing\RouteGroup;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
 
 
 Route::get('/', [landingController::class, 'Landing'])->name('home');
@@ -30,33 +28,23 @@ Route::get('/Contact', [ContactController::class, 'Contact'])->name('Contact');
 
 Route::get('/Check', [AuthController::class,'CheckUser'])->name('Check');
 
-Route::get('/register', [AuthController::class, 'register']);
-
-Route::post('/post', [AuthController::class, 'store'])->name('post');
-
 Route::post('/Ownerpost', [AuthController::class, 'Ownerstore'])->name('Ownerpost');
-
-Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/loginAcademy', [AuthController::class,'LoginAcademy'])->name('loginAcademy');
 
 Route::get('/registerAcademy', [AuthController::class,'registerAcademy'])->name('registerAcademy');
 
-Route::post('/authnit', [AuthController::class, 'auhtnitcate'])->name('authnit');
-
 Route::post('/Academyauthnit', [AuthController::class, 'Academyauhtnitcate'])->name('Academyauthnit');
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/Academylogout', [AuthController::class, 'Academylogout'])->name('Academylogout');
 
 Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProfile')->middleware('Owner');
 
-Route::get('/UserProfile', [ProfileController::class,'User'])->name('UserProfile');
 
-Route::get('/UserProfile/{id}', [ProfileController::class,'UserConfigure'])->name('UserConfigure.show');
 
-Route::put('/UserProfile/{id}/update', [ProfileController::class,'upadate'])->name('UserConfigure.update');
+
+
+
 
 Route::get('/AddingCourses', [CoursesController::class, 'AddingCourses'])->name('AddingCourses');
 
@@ -70,12 +58,8 @@ Route::get('/register/FormAuth', [AuthController::class, 'FormAuthUSer'])->name(
 
 Route::post('/register/FormAuth/submitted', [UserAuthFormController::class,'FormStore'])->name('userFormSubmit');
 
-Route::get('/email/verify', [AuthController::class, 'EmailVerifyView'])->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'EmailVerify'] )->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::post('/email/verification-notification', [AuthController::class, 'sendVerificationEmail'])
-    ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware('auth:owner')->group(function () {
 
@@ -84,17 +68,10 @@ Route::middleware('auth:owner')->group(function () {
 });
 
 
-Route::post('/cart/{course}', [CartController::class, 'add'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
-
-
 
 Route::middleware('auth')->group(function () {
 
-    Route::post('/cart/{course}', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
+   
     
 });
 
