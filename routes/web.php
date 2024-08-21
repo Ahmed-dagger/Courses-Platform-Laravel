@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 Route::get('/', [landingController::class, 'Landing'])->name('home');
 
 Route::get('/courses', [CoursesController::class, 'Courses'])->name('courses');
@@ -40,12 +41,6 @@ Route::post('/Academylogout', [AuthController::class, 'Academylogout'])->name('A
 
 Route::get('/Profile', [ProfileController::class, 'Profile'])->name('AcademyProfile')->middleware('Owner');
 
-
-
-
-
-
-
 Route::get('/AddingCourses', [CoursesController::class, 'AddingCourses'])->name('AddingCourses');
 
 Route::post('/CourseAdder', [CoursesController::class, 'Add'])->name('CourseAdder');
@@ -66,15 +61,6 @@ Route::middleware('auth:owner')->group(function () {
     Route::post('/Academylogout', [AuthController::class, 'Academylogout'])->name('Academylogout');
     
 });
-
-
-
-Route::middleware('auth')->group(function () {
-
-   
-    
-});
-
 
 
 

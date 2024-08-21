@@ -22,7 +22,15 @@ class CoursesController extends Controller
         }
 
         $courses = $courses->paginate(4);
-        return view('courses', compact('courses'),compact('coursesCount'));
+
+        if (request()->ajax()) {
+            return response()->json([
+                'courses' => view('partials.course_list', compact('courses'))->render(),
+                'coursesCount' => $coursesCount
+            ]);
+        }
+        
+        return view('courses', compact('courses','coursesCount'));
     }
 
     public function Coursepage($id)
@@ -31,7 +39,6 @@ class CoursesController extends Controller
         $course = Course::findOrFail($id);
         $Ownername = $course->owner-> Owner_name;
 
-        
         return view('CoursePage', compact('course','Ownername'));
     }
 

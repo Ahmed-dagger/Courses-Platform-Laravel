@@ -10,9 +10,6 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        
-
-
         Schema::dropIfExists('courses');
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
@@ -25,8 +22,6 @@ return new class extends Migration {
             $table->string('courseLanguage');
             $table->timestamps();
         });
-
-        
     }
 
     /**
