@@ -49,8 +49,8 @@
             <div class=" col-sm-2 justify-content-center my-5 text-center">
                 <div class="container justify-content-center text-center">
                     <img src="img/coursesIcon.png" class="InfoCounterAbouticon" alt="">
-                    <h5 class="my-4 text-danger">Courses</h5>
-                    <h5 class="text-danger counter" data-count="1205">0</h5>
+                    <h5 class="my-4 text-center text-danger">Courses</h5>
+                    <h5 class="text-danger text-center counter" data-count="1205">0</h5>
 
 
                 </div>
@@ -58,16 +58,16 @@
             <div class=" col-sm-2 justify-content-center mx-5 my-5 text-center">
                 <div class="container justify-content-center text-center">
                     <img src="img/studentsbrainicon.png" alt="" class="InfoCounterAbouticon">
-                    <h5 class="my-4 text-danger">Students</h5>
-                    <h5 class="text-danger counter" data-count="251300">0</h5>
+                    <h5 class="my-4 text-center text-danger">Students</h5>
+                    <h5 class="text-danger text-center counter" data-count="251300">0</h5>
 
                 </div>
             </div>
             <div class=" col-sm-2 justify-content-center my-5 text-center">
                 <div class="container justify-content-center text-center">
                     <img src="img/tutorsicon.png" alt="" class="InfoCounterAbouticon">
-                    <h5 class="my-4 text-danger">Tutors</h5>
-                    <h4 class="text-danger counter" data-count="20">0</h4>
+                    <h5 class="my-4 text-center text-danger">Tutors</h5>
+                    <h4 class="text-danger text-center counter" data-count="20">0</h4>
 
                 </div>
             </div>
@@ -314,49 +314,49 @@
 
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid TeamMembers">
         <div class="container justify-content-between d-flex my-4">
             <h5>Meet our team members</h5>
             <div class="col-sm-2">
-                <button class="LogINBtn">Join Our Team</button>
+                <button class=" text-center LogINBtn">Join Our Team</button>
 
             </div>
         </div>
-        <div class="container justify-content-center text-center">
+        <div class="container text-center justify-content-center text-center TeamMembers">
             <div class="row g-3 mb-4">
-                <div class="col-sm">
+                <div class="col-sm justify-content-center text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Mark hughes</h5>
-                        <p class="text-secondary">Web Developer</p>
+                        <h5 class="text-dark text-center">Mark hughes</h5>
+                        <p class="text-secondary text-center">Web Developer</p>
 
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member2.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Ted hughes</h5>
-                        <p class="text-secondary">App Developer</p>
+                        <h5 class="text-dark text-center">Ted hughes</h5>
+                        <p class="text-secondary text-center">App Developer</p>
 
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member3.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">muhammed qader</h5>
-                        <p class="text-secondary">system Analyst</p>
+                        <h5 class="text-dark text-center">muhammed qader</h5>
+                        <p class="text-secondary text-center">system Analyst</p>
 
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/freepik-export-20240701083100pwgA.png"
                         alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Alicia Keys</h5>
-                        <p class="text-secondary">Database Admin</p>
+                        <h5 class="text-dark text-center">Alicia Keys</h5>
+                        <p class="text-secondary text-center">Database Admin</p>
 
                     </div>
 
@@ -365,39 +365,39 @@
 
             </div>
 
-            <div class="row g-3">
-                <div class="col-sm">
+            <div class="row g-3 justify-content-center">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member5.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Maged Aly</h5>
-                        <p class="text-secondary">Graphic Designer</p>
+                        <h5 class="text-dark text-center">Maged Aly</h5>
+                        <p class="text-secondary text-center">Graphic Designer</p>
 
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member6.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Shady Muhammed</h5>
-                        <p class="text-secondary">Cs Engineer</p>
+                        <h5 class="text-dark text-center">Shady Muhammed</h5>
+                        <p class="text-secondary text-center">Cs Engineer</p>
 
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
 
                     <img class="rounded-circle img-fluid MembersImg" src="img/member7.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">Muhammed ali</h5>
-                        <p class="text-secondary">Office Boy</p>
+                        <h5 class="text-dark text-center">Muhammed ali</h5>
+                        <p class="text-secondary text-center">Office Boy</p>
                     </div>
 
                 </div>
-                <div class="col-sm">
+                <div class="col-sm text-center">
                     <img class="rounded-circle img-fluid MembersImg" src="img/member8.png" alt="">
                     <div class="container my-3">
-                        <h5 class="text-dark">John doe</h5>
-                        <p class="text-secondary">CEO</p>
+                        <h5 class="text-dark text-center">John doe</h5>
+                        <p class="text-secondary text-center">CEO</p>
 
                     </div>
 

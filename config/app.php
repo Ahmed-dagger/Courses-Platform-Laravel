@@ -1,5 +1,9 @@
 <?php
 
+use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\ServiceProvider as SupportServiceProvider;
+
 return [
 
     /*
@@ -105,6 +109,14 @@ return [
         ),
     ],
 
+    'providers' => ServiceProvider::defaultProviders()->merge([
+
+        PayMob\PayMobServiceProvider::class,
+    ])->toArray(),
+
+    'aliases' => Facade::defaultAliases()->merge([
+        'PayMob' => PayMob\Facades\PayMob::class,
+    ])->toArray(),
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver

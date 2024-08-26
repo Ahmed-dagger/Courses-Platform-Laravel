@@ -39,8 +39,13 @@
                     <div class="col-sm-3 border shadow-sm
                     " id="sidebar" style="height: fit-content; position:sticky; top:0;">
                         <div class="mt-5 container">
-                                <h3 class="text-left"> <span class="text-grey h6">Total :</span> <br> {{ $total }}$</h3>
-                                <button class="w-100 LogINBtn">Checkout</button>
+                                <h3 class="text-left"> <span class="text-grey h6">Total :</span> <br> {{ $sum_total }}$</h3>
+
+                                <form action="" method="">
+                                    @csrf
+                                    <button class="w-100 LogINBtn" type="submit">Checkout</button>
+                                </form>
+                                
                             </div>
                             <hr>
                             <div class="container d-flex my-5">

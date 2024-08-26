@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -25,8 +26,17 @@ class AppServiceProvider extends ServiceProvider
     {
         PaginationPaginator::useBootstrapFive();
 
-        
+        View::composer('*', function ($view) {
+            if (auth()->check()) {
+                $cartcount = Cart::where('user_id', auth()->user()->id)->count();
+                $view->with('cartcount', $cartcount);
+            }
 
-        View::share("cartcount", $cartcount = Cart::count());
+            else
+            {
+                $cartcount = 0;
+                $view->with('cartcount', $cartcount);
+            }
+        });
     }
 }

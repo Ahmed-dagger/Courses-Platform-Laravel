@@ -81,21 +81,21 @@
         <div class="form">
             <div class="row my-4 g-3">
                 <div class="col-md-6">
-                    <input type="text" placeholder="Name" class="w-100 ContantFieldStyling">
+                    <input type="text" placeholder="Name" class="w-100 ContantFieldStyling px-3">
                 </div>
                 <div class="col-md-6">
-                    <input type="text" placeholder="E-mail" class="w-100 ContantFieldStyling">
+                    <input type="text" placeholder="E-mail" class="w-100 ContantFieldStyling px-3">
                 </div>
 
             </div>
             <div class="row my-4">
                 <div class="col-md-12">
-                    <input type="text" placeholder="Message" class="w-100 MessageFieldStyling">
+                    <input type="text" placeholder="Message" class="w-100 MessageFieldStyling px-3">
                 </div>
 
             </div>
-            <div class="container justify-content-end text-right">
-                <input class="ContactSubmit" type="submit">
+            <div class="container">
+                <input class="ContactSubmit text-center" type="submit">
             </div>
 
 

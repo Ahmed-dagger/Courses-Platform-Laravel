@@ -586,7 +586,8 @@ body {
 }
 
 .footer a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: rgb(231, 231, 231);
 }
 
 .footer .social-links a {
@@ -615,7 +616,7 @@ body {
     z-index: 1000;
 }
 
-/*Home Styling*/
+/*!Home Styling*/
 
 .Home-Banner {
     background-image: url(/img/HomeBanner.jpeg);

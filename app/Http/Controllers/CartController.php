@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -22,6 +24,7 @@ class CartController extends Controller
                         'user_id' => auth()->user()->id,
                         'course_id' => $course->id,
                     ]);
+
 
                     return redirect()->route('courses')->with('success','Course added to cart successfully');
                 }
@@ -44,11 +47,21 @@ class CartController extends Controller
             ->get();
 
         $cartcount = Cart::count();
+
+
         
-        $total = $cartItems->sum(function ($cartItem) {
+        $sum_total = $cartItems->sum(function ($cartItem) {
             return $cartItem->course-> Price;  
         });
-        return view('Cart', compact('cartItems','course','cartcount','total'));
+
+        $total_price = Order::create([
+            'total_price' => $sum_total
+        ]);
+
+        $final_total = $total_price ->total_price;
+
+
+        return view('Cart', compact('cartItems','course','cartcount','sum_total'));
     }
 
     public function remove(Cart $cart)

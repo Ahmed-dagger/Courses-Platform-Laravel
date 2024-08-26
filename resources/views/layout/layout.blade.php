@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ltr.css') }}">
     <link rel="stylesheet" href="LoginRegister/LoginRegisterStyling.css">
     <link rel="stylesheet" href="LoginRegister/LoginRegisterStyling.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -32,11 +33,11 @@
             <div class="container d-flex justify-content-between">
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center">
-                        <i class="fa fa-phone tph-icons mt-0 mr-1"></i> <span class="text-dark infos">(+88) 1990
+                        <i class="fa fa-phone tph-icons mt-0 mx-1"></i> <span class="text-dark infos">(+88) 1990
                             6886</span>
                     </div>
-                    <div class="col-md-6 d-flex align-items-center border-left border-dark b-1">
-                        <img width="16" height="16" class="mt-0 mr-1"
+                    <div class="col-md-6 d-flex align-items-center infoContainer">
+                        <img width="16" height="16" class="mt-0 mx-1"
                             src="https://img.icons8.com/material-sharp/128/DB0000/mail.png" alt="mail" />
                         <span class="text-dark infos">agency@example.com</span>
                     </div>
@@ -53,17 +54,10 @@
                             <div class="container d-flex">
                                 <a href="{{ route('Check') }}" class="text-dark text-center cardentials mr-2">Log in</a>
                                 <a href="{{ route('Check') }}"
-                                    class="text-dark cardentials border-left border-dark border-1 pl-2">Register</a>
+                                    class="text-dark cardentials infoContainer px-2 mx-2">Register</a>
                             </div>
                         @endif
-
-
-
-
-
-
-
-
+                        
                         @auth('owner')
                             @if (Auth::guard('owner')->check())
                                 <div class="d-flex text-center justify-content-center align-items-center my-1">
@@ -129,7 +123,7 @@
                     <a href="{{ route('home') }}"><img src="{{ asset('img/white-logo.png') }}" alt=""></a>
                 </div>
 
-                <nav class="navbar navbar-expand-lg justify-content-center text-center">
+                <nav class="navbar navbar-expand-lg">
 
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav text-center">
@@ -151,9 +145,9 @@
                                       </svg>
                                 </a>
                                 <div class="dropdown-content text-center" aria-labelledby="otherDropdown">
-                                    <a class="pt-2" id="top" href="ErrorPage.html">Subul+</a>
-                                    <a class="py-2" id="middle" href="ErrorPage.html">Our best</a>
-                                    <a class="pb-2" id="bottom" href="ErrorPage.html">Subulway</a>
+                                    <a class="text-center pt-2" id="top" href="ErrorPage.html">Subul+</a>
+                                    <a class="text-center py-2" id="middle" href="ErrorPage.html">Our best</a>
+                                    <a class="text-center pb-2" id="bottom" href="ErrorPage.html">Subulway</a>
                                 </div>
                             </li>
                             <li class="nav-item  {{ request()->routeIs('About') ? 'active' : '' }}">
@@ -172,7 +166,7 @@
                 </nav>
 
 
-                <div class="d-flex ml-auto">
+                <div class="d-flex cartContainer">
 
                     <div class="cart text-right d-flex justify-content-end">
                         <a href="{{ route('cart.index') }}" id="cart-btn">
@@ -190,8 +184,6 @@
                             
                         </a>
                     </div>
-
-                    
                 </div>
                 
                 <!--MObile Menu-->
@@ -295,7 +287,7 @@
 
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-5">
+    <footer class="footer mt-auto py-5 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -328,7 +320,7 @@
                     <img src="{{ asset('img/white-logo.png') }}" alt="Turuq Logo" class="mb-3">
                     <p class="text-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
-                    <div class="social-links">
+                    <div class="social-links justify-content-center text-center">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -348,7 +340,7 @@
                     <a href="#">Terms of service</a>
                 </div>
                 <div class="col-md-6 text-center">
-                    <p class="text-light">&copy; 2024 Belton is Proudly Powered by <a href="#"
+                    <p class="text-light copyright">&copy; 2024 Belton is Proudly Powered by <a href="#"
                             class="text-danger">Turuq</a></p>
                 </div>
             </div>

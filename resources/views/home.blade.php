@@ -11,8 +11,9 @@
                         us and enjoy the joyful of learning</p>
                 </div>
                 <div class="container mt-4">
-                    <a href=""><button class="StartButton">Let's Start</button></a> <a href=""><button
-                            class="WVideo">Watch A Video</button></a>
+                    <a href=""><button class="StartButton text-center">Let's Start</button></a> <a href="">
+                        <button
+                            class="WVideo text-center">Watch A Video </button></a>
                 </div> <br>
                 <div class="container py-2">
                     <button class="text-center USersBtn">170+ <br> <span class="text-danger USersTitle">Active
@@ -49,7 +50,7 @@
                     <div class="search-container text-right d-flex">
 
                         <input type="text" class="search-input" placeholder="Look for Courses">
-                        <button class="search-button">
+                        <button class="search-button mx-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-search text-danger" viewBox="0 0 16 16">
                                 <path
@@ -70,20 +71,20 @@
           <div class="carousel-inner">
               <div class="carousel-item active">
                   <div class="d-flex justify-content-center flex-wrap">
-                      <button class="category-Btn active m-1" data-content-id="content-1">UI/UX Design</button>
-                      <button class="category-Btn m-1" data-content-id="content-2">Development</button>
-                      <button class="category-Btn m-1" data-content-id="content-3">Data Science</button>
-                      <button class="category-Btn m-1" data-content-id="content-4">Business</button>
-                      <button class="category-Btn m-1" data-content-id="content-5">Financial</button>
+                      <button class="text-center category-Btn active m-1" data-content-id="content-1">UI/UX Design</button>
+                      <button class="text-center category-Btn m-1" data-content-id="content-2">Development</button>
+                      <button class="text-center category-Btn m-1" data-content-id="content-3">Data Science</button>
+                      <button class="text-center category-Btn m-1" data-content-id="content-4">Business</button>
+                      <button class="text-center category-Btn m-1" data-content-id="content-5">Financial</button>
                   </div>
               </div>
               <div class="carousel-item">
                   <div class="d-flex justify-content-center flex-wrap">
-                      <button class="category-Btn m-1">Category 6</button>
-                      <button class="category-Btn m-1">Category 7</button>
-                      <button class="category-Btn m-1">Category 8</button>
-                      <button class="category-Btn m-1">Category 9</button>
-                      <button class="category-Btn m-1">Category 10</button>
+                      <button class="text-center category-Btn m-1">Category 6</button>
+                      <button class="text-center category-Btn m-1">Category 7</button>
+                      <button class="text-center category-Btn m-1">Category 8</button>
+                      <button class="text-center category-Btn m-1">Category 9</button>
+                      <button class="text-center category-Btn m-1">Category 10</button>
                   </div>
               </div>
           </div>

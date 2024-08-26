@@ -6,8 +6,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\landingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\UserAuthFormController;
-use App\Http\Controllers\CartController; 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Middleware\userVerified;
@@ -52,6 +54,19 @@ Route::put('/Configure/udpate', [ProfileController::class, 'updateinfo'])->name(
 Route::get('/register/FormAuth', [AuthController::class, 'FormAuthUSer'])->name('FormAuth');
 
 Route::post('/register/FormAuth/submitted', [UserAuthFormController::class,'FormStore'])->name('userFormSubmit');
+
+
+
+
+Route::post('/checkout', [CheckoutController::class, 'index'])->name('paymobCheckout');
+
+Route::post('/checkout/processed', [CheckoutController::class, 'ProcessCheckout']);
+
+Route::get('checkout/response', function(Request $request) {
+return $request->all();
+});
+
+
 
 
 
