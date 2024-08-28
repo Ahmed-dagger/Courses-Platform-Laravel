@@ -36,7 +36,7 @@
 
                 <div class="container d-flex mt-3">
                     <img src="../img/Bannerwoman.png" width="30" class="rounded-circle" alt="">
-                    <h6 class="text-light pt-2 pl-3">{{ $Ownername }}</h6>
+                    <h6 class="text-light pt-2 pl-3">Teacher</h6>
                     <h6 class="text-light pt-2 pl-3">|</h6>
                     <h6 class="pt-2 pl-3 text-light">Last Update 26 December 2024</h6>
 

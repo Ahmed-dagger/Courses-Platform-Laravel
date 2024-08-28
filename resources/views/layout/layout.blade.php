@@ -57,11 +57,12 @@
                                     class="text-dark cardentials infoContainer px-2 mx-2">Register</a>
                             </div>
                         @endif
-                        
+
                         @auth('owner')
                             @if (Auth::guard('owner')->check())
                                 <div class="d-flex text-center justify-content-center align-items-center my-1">
-                                    <a href="{{ route('AcademyProfile') }}" class="text-dark text-decoration-none cardentials mr-2"
+                                    <a href="{{ route('AcademyProfile') }}"
+                                        class="text-dark text-decoration-none cardentials mr-2"
                                         style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                         {{ Auth::guard('owner')->user()->academy_name }}</a>
                                     <form method="POST" class="border-left border-dark border-1"
@@ -126,7 +127,7 @@
                 <nav class="navbar navbar-expand-lg">
 
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                        <ul class="navbar-nav text-center">
+                        <ul class="navbar-nav text-center align-items-center">
                             <li class="nav-item  {{ request()->routeIS('home') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('home') }}">Home
                                 </a>
@@ -140,9 +141,11 @@
                             <li class="nav-item dropdownmenu">
                                 <a class="nav-link buttonDrop" href="#">
                                     Other
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                                      </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                    </svg>
                                 </a>
                                 <div class="dropdown-content text-center" aria-labelledby="otherDropdown">
                                     <a class="text-center pt-2" id="top" href="ErrorPage.html">Subul+</a>
@@ -161,8 +164,32 @@
                                     Contact
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Choose language
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item " href="#" data-value="en">
+                                                <img width="20" height="20"
+                                                    src="https://img.icons8.com/color/120/great-britain-circular.png"
+                                                    alt="great-britain-circular" />
+                                                English</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="ar">
+                                                <img width="20" height="20"
+                                                    src="https://img.icons8.com/color/120/saudi-arabia-circular.png"
+                                                    alt="saudi-arabia-circular" />
+                                                Arabic</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </div>
+
+
+
+
                 </nav>
 
 
@@ -175,17 +202,17 @@
                                 colors="primary:#ffffff,secondary:#ffffff" style="width:30px;height:30px">
                             </lord-icon></i>
 
-                            @if($cartcount == 0)
+                            @if ($cartcount == 0)
                                 <span></span>
                             @else
-                            <span class="badge rounded-pill badge-danger">{{ $cartcount }}</span>
+                                <span class="badge rounded-pill badge-danger">{{ $cartcount }}</span>
                             @endif
-                            
-                            
+
+
                         </a>
                     </div>
                 </div>
-                
+
                 <!--MObile Menu-->
                 <div class="d-lg-none Burger">
                     <nav id="sidebar" class="sidebar">
@@ -196,9 +223,10 @@
                             </button>
                         </div>
                         <ul class="list-unstyled components">
-                            <li class="MenuItem {{ request()->routeIS('home') ? 'active' : '' }}"><a href="/" class="linkItem">Home</a></li>
-                            <li class="MenuItem {{ request()->routeIs('courses') ? 'active' : '' }}"><a href="courses"
-                                    class="linkItem">Courses</a>
+                            <li class="MenuItem {{ request()->routeIS('home') ? 'active' : '' }}"><a href="/"
+                                    class="linkItem">Home</a></li>
+                            <li class="MenuItem {{ request()->routeIs('courses') ? 'active' : '' }}"><a
+                                    href="courses" class="linkItem">Courses</a>
                             </li>
                             <li class="MenuItem"><a href="#otherSubmenu" data-bs-toggle="collapse"
                                     aria-expanded="false" class="dropdown-toggle linkItem">Other</a>
@@ -208,62 +236,87 @@
                                     <li><a href="ErrorPage.html" class="linkItem">Submenu 3</a></li>
                                 </ul>
                             </li>
-                            <li class="MenuItem {{ request()->routeIS('About') ? 'active' : '' }}"><a href="About" class="linkItem">About</a></li>
-                            <li class="MenuItem {{ request()->routeIS('Contact') ? 'active' : '' }}"><a href="Contact" class="linkItem">Contact</a></li>
+                            <li class="MenuItem {{ request()->routeIS('About') ? 'active' : '' }}"><a href="About"
+                                    class="linkItem">About</a></li>
+                            <li class="MenuItem {{ request()->routeIS('Contact') ? 'active' : '' }}"><a
+                                    href="Contact" class="linkItem">Contact</a></li>
+
+                                    <li class="MenuItem">
+                                        <div class="dropdown">
+                                            <button class="btn btn-light dropdown-toggle" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Choose language
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item " href="#" data-value="en">
+                                                        <img width="20" height="20"
+                                                            src="https://img.icons8.com/color/120/great-britain-circular.png"
+                                                            alt="great-britain-circular" />
+                                                        English</a></li>
+                                                <li><a class="dropdown-item" href="#" data-value="ar">
+                                                        <img width="20" height="20"
+                                                            src="https://img.icons8.com/color/120/saudi-arabia-circular.png"
+                                                            alt="saudi-arabia-circular" />
+                                                        Arabic</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                         </ul>
 
                         <!-- Auth section -->
                         <div class="container justify-content-center">
                             @if (!Auth::guard('owner')->check() && !Auth::guard('web')->check())
-                            <div class="container d-flex">
-                                <a href="{{ route('Check') }}" class="text-light text-decoration-none text-center cardentials mr-2">Log in</a>
-                                <a href="{{ route('Check') }}"
-                                    class="text-light text-decoration-none cardentials border-left border-light border-1 pl-2">Register</a>
-                            </div>
-                        @endif
-                        
-                        @auth('owner')
-                            @if (Auth::guard('owner')->check())
+                                <div class="container d-flex">
+                                    <a href="{{ route('Check') }}"
+                                        class="text-light text-decoration-none text-center cardentials mr-2">Log in</a>
+                                    <a href="{{ route('Check') }}"
+                                        class="text-light text-decoration-none cardentials border-left border-light border-1 pl-2">Register</a>
+                                </div>
+                            @endif
+
+                            @auth('owner')
+                                @if (Auth::guard('owner')->check())
+                                    <div class="d-flex text-center justify-content-center align-items-center my-1">
+                                        <a href="{{ route('AcademyProfile') }}"
+                                            class="text-light text-decoration-none cardentials mr-2"
+                                            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            {{ Auth::guard('owner')->user()->academy_name }}</a>
+                                        <form method="POST" class="border-left border-dark border-1"
+                                            action="{{ route('Academylogout') }}">
+                                            @csrf
+                                            <button class="btn btn-outline-danger btn-sm ml-2"
+                                                type="submit">Logout</button>
+                                        </form>
+
+                                    </div>
+                                @endif
+                            @endauth
+
+                            @auth()
                                 <div class="d-flex text-center justify-content-center align-items-center my-1">
-                                    <a href="{{ route('AcademyProfile') }}" class="text-light text-decoration-none cardentials mr-2"
+
+                                    <a href="{{ route('UserProfile') }}"><img src="{{ Auth::user()->getImageUrl() }}"
+                                            class="rounded-circle mr-2 border border-dark border-2"
+                                            style="object-fit: cover; object-position: 50% 0;" alt="Profile Image"
+                                            width="30" height="30"></a>
+
+                                    <a href="{{ route('UserProfile') }}"
+                                        class="text-light text-decoration-none cardentials mr-2 align-itmes-center d-flex"
                                         style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                        {{ Auth::guard('owner')->user()->academy_name }}</a>
-                                    <form method="POST" class="border-left border-dark border-1"
-                                        action="{{ route('Academylogout') }}">
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <form method="POST" action="{{ route('logout') }}"
+                                        class="border-left border-dark border-1">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm ml-2" type="submit">Logout</button>
                                     </form>
 
                                 </div>
-                            @endif
-                        @endauth
-                        
-                        @auth()
+                            @endauth
 
-                            <div class="d-flex text-center justify-content-center align-items-center my-1">
+                        </div>
 
-                                <a href="{{ route('UserProfile') }}"><img src="{{ Auth::user()->getImageUrl() }}"
-                                        class="rounded-circle mr-2 border border-dark border-2"
-                                        style="object-fit: cover; object-position: 50% 0;" alt="Profile Image"
-                                        width="30" height="30"></a>
-
-                                <a href="{{ route('UserProfile') }}"
-                                    class="text-light text-decoration-none cardentials mr-2 align-itmes-center d-flex"
-                                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <form method="POST" action="{{ route('logout') }}"
-                                    class="border-left border-dark border-1">
-                                    @csrf
-                                    <button class="btn btn-outline-danger btn-sm ml-2" type="submit">Logout</button>
-                                </form>
-
-                            </div>
-                        @endauth
-
-                    </div>
-                
                     </nav>
 
                     <button type="button" id="sidebarCollapseBtn">
@@ -365,6 +418,7 @@
     <script src="{{ asset('js/burger-menu.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script>
         AOS.init({
 
@@ -377,6 +431,30 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            const dropdownToggle = document.getElementById('dropdownMenuButton1');
+            const currentUrl = window.location.href;
+
+            if (currentUrl.includes('/en')) {
+                dropdownToggle.textContent = 'English';
+            } else if (currentUrl.includes('/ar')) {
+                dropdownToggle.textContent = 'Arabic';
+            }
+           
+
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default link behavior
+                    const selectedText = this.textContent;
+                    dropdownToggle.textContent = selectedText;
+                });
+            });
+        });
+        
+    </script>
 
 
 </body>

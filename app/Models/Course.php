@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    use CrudTrait;
+
+    protected $casts = [
+        'video_paths' => 'array', // Automatically cast to and from JSON
+    ];
     protected $fillable = [
-        'owner_id',
         'name',
         'price',
         'CoursesDate',

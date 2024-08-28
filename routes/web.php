@@ -47,6 +47,8 @@ Route::get('/AddingCourses', [CoursesController::class, 'AddingCourses'])->name(
 
 Route::post('/CourseAdder', [CoursesController::class, 'Add'])->name('CourseAdder');
 
+Route::post('admin/course/upload-video', [App\Http\Controllers\Admin\CourseCrudController::class, 'uploadVideo'])->name('course.upload-video');
+
 Route::get('/Configure', [ProfileController::class, 'configureProfile'])->name('Configure');
 
 Route::put('/Configure/udpate', [ProfileController::class, 'updateinfo'])->name('updateinfo');

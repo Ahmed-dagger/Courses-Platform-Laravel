@@ -37,9 +37,8 @@ class CoursesController extends Controller
     {
         
         $course = Course::findOrFail($id);
-        $Ownername = $course->owner-> Owner_name;
 
-        return view('CoursePage', compact('course','Ownername'));
+        return view('CoursePage', compact('course'));
     }
 
     public function AddingCourses()
@@ -73,6 +72,7 @@ class CoursesController extends Controller
 
         $course->save();
         return redirect()->route('AcademyProfile')->with('success','');
+
 
     }
 }
